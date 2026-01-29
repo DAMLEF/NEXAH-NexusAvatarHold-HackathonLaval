@@ -12,8 +12,6 @@ public class LaserBounce : MonoBehaviour
     public static int maxLifeTime;
     [SerializeField] private int maxLifeTimeEditor = 500;
 
-
-
     private int bouncesLeft;
     private int timeLeft;
     private Rigidbody rb;

@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
 {
     public float cooldown = 30;
     public GameObject laserPrefab;
+    public Transform laserStorage; // Hierachy management
 
     private Transform shootingPoint;
     private InputDevice hand;
@@ -35,7 +36,9 @@ public class Gun : MonoBehaviour
         if (triggerPressed)
         {
             ticking = cooldown + 1;
+
             GameObject laser = Instantiate(laserPrefab);
+            if (laserStorage) laser.transform.SetParent(laserStorage);
             laser.transform.position = shootingPoint.position;
             laser.transform.localRotation = shootingPoint.rotation;
         }

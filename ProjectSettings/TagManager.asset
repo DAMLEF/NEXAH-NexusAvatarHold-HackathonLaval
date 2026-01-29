@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - Marker
+  - Laser
   layers:
   - Default
   - TransparentFX

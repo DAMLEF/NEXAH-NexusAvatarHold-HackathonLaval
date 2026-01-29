@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4854279947196805089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3724573107906985268}
+  - component: {fileID: 2403782784997578968}
+  - component: {fileID: 4163456918096160019}
+  - component: {fileID: 7997050319355315194}
+  m_Layer: 0
+  m_Name: DamienPewPew
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3724573107906985268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854279947196805089}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.030263027, y: 0.4470908, z: 0.07405704}
+  m_LocalScale: {x: 0.27875, y: 0.27875, z: 0.27875}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &2403782784997578968
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854279947196805089}
+  m_Mesh: {fileID: 4300000, guid: 53ab2a96e3447e4478cada74c0155653, type: 2}
+--- !u!23 &4163456918096160019
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854279947196805089}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 84614d4d7b3265e4a8ff2c86e83dd541, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7997050319355315194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854279947196805089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714ab2fda4cdccf4fae81377e889c987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cycle4DSFrames
+  meshes:
+  - {fileID: 4300000, guid: 53ab2a96e3447e4478cada74c0155653, type: 2}
+  - {fileID: 4300000, guid: 72323858662e64a4b92732fbd11bdcde, type: 2}
+  - {fileID: 4300000, guid: 41b48511a0ecf6546b931ee1f27fbf7e, type: 2}
+  - {fileID: 4300000, guid: 1592d5dc26bc1e244a92393fc98f18a7, type: 2}
+  - {fileID: 4300000, guid: 1648b0cac8e1f5f46a108897f45bbbb2, type: 2}
+  - {fileID: 4300000, guid: a405a839994674749a0cae9713354467, type: 2}
+  - {fileID: 4300000, guid: 0eb8ce36cc776d247a48c7a4f4b61665, type: 2}
+  - {fileID: 4300000, guid: be30c5bb2cc32ca4092b8b625d32b3b1, type: 2}
+  - {fileID: 4300000, guid: 6373d168b58b1424fa89cc6345e77f33, type: 2}
+  - {fileID: 4300000, guid: 8a21916213f2de34a928e34510485f76, type: 2}
+  - {fileID: 4300000, guid: 2f650e6823d25dc45bb66a358075aea6, type: 2}
+  - {fileID: 4300000, guid: c8020b56d13e98a44a114bc997e44db9, type: 2}
+  - {fileID: 4300000, guid: 3bdfe2626bae51743a5033354857becd, type: 2}
+  - {fileID: 4300000, guid: f407e719d26af304db33e3729f5f6282, type: 2}
+  - {fileID: 4300000, guid: cc64d0e0f81f8fe4aa3a9d5961e39cf4, type: 2}
+  - {fileID: 4300000, guid: dda3ded93b5383d419dd3c64ac9a3132, type: 2}
+  - {fileID: 4300000, guid: 6d90e21011802c447bcf6312e0b3b722, type: 2}
+  - {fileID: 4300000, guid: af0cc6c112d416c4ea94125309ef213a, type: 2}
+  - {fileID: 4300000, guid: 35baf15d5ffb03d4a9bfe0f3e25c34f8, type: 2}
+  - {fileID: 4300000, guid: 35b856b8e22fee848adbe91f14978749, type: 2}
+  materials:
+  - {fileID: 2100000, guid: 84614d4d7b3265e4a8ff2c86e83dd541, type: 2}
+  - {fileID: 2100000, guid: bd56ad5c5740f8b47b38560b111cdb30, type: 2}
+  - {fileID: 2100000, guid: 1b9b18bfd7a827b4ba877ca95ba53858, type: 2}
+  - {fileID: 2100000, guid: 29f37a58cdbb61148a4f9880c79b5dfe, type: 2}
+  - {fileID: 2100000, guid: a537eb60e3083324fa28dcce9606a3e7, type: 2}
+  - {fileID: 2100000, guid: 8f06b986c21440d4c993b7307729411a, type: 2}
+  - {fileID: 2100000, guid: 312cbb3640480b6479e199f441c281e4, type: 2}
+  - {fileID: 2100000, guid: 68c0b7351404be34991883faba2cf2cb, type: 2}
+  - {fileID: 2100000, guid: a546db0876459de4790341e77dec0c58, type: 2}
+  - {fileID: 2100000, guid: 4460eeca7e8f82547a13f082c19a1166, type: 2}
+  - {fileID: 2100000, guid: 8b533e2ba4cedad45a8ead4241fde4f0, type: 2}
+  - {fileID: 2100000, guid: 99f23e6d6bbbab74995ced8bfdfee79b, type: 2}
+  - {fileID: 2100000, guid: 3af0f5af4eefd234ca3a80219664020b, type: 2}
+  - {fileID: 2100000, guid: ef4b46505c76bc14b88f783039f1c942, type: 2}
+  - {fileID: 2100000, guid: 93a34223c62d38b4ba89344a8e31462f, type: 2}
+  - {fileID: 2100000, guid: df6029eced121e74fb012d8f564a29e6, type: 2}
+  - {fileID: 2100000, guid: be0b07d3102835b4aa4413089c0fb823, type: 2}
+  - {fileID: 2100000, guid: 35f969e934e943943be8cea0004710f9, type: 2}
+  - {fileID: 2100000, guid: d570f2cd62852dc44a3693f92f0a6ff9, type: 2}
+  - {fileID: 2100000, guid: a4bc43e6ec2c48e4b90bc142e7801e87, type: 2}
+  frameDelay: 0.2

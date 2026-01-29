@@ -36,7 +36,7 @@ public class AllyZone : MonoBehaviour
     {
 
 
-        if (avatars.Count < 3)
+        if (avatars.Count < 1)
         {
             GameObject avatar = Instantiate(avatarGO);
             addAvatar(avatar);

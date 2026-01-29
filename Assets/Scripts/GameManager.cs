@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> lanes;
 
+    public GameObject avatarGrabSpawn;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("MONEY : " + money);
+        
 
         foreach (GameObject lane in lanes)
         {
@@ -34,6 +36,19 @@ public class GameManager : MonoBehaviour
     public void addMoney(int m)
     {
         money += m;
+    }
+
+    public void removeMoney(int m)
+    {
+        money -= m;
+    }
+
+    public int getMoney() {  return money; }
+
+
+    public void makeShopAction(int action)
+    {
+
     }
 
     public List<GameObject> getLanes()

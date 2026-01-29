@@ -50,8 +50,9 @@ public class Avatar : MonoBehaviour
             }
 
             Debug.Log("LANE : " + defendedLane);
-            attack.GetComponent<AvatarProjectile>().setupProjectile(transform.position.x, transform.position.y, transform.position.z, axis, direction, defendedLane.GetComponent<Lane>().getLaneLength(), damage);
             attack.GetComponent<BoxCollider>().size = colliderSize;
+            attack.GetComponent<AvatarProjectile>().setupProjectile(transform.position.x, transform.position.y, transform.position.z, axis, direction, defendedLane.GetComponent<Lane>().getLaneLength(), damage);
+
 
 
             lastAttack = Time.time;

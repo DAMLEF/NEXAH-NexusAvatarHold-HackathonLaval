@@ -10,6 +10,8 @@ public class AvatarProjectile : MonoBehaviour
     private bool axis;
     private bool direction;
 
+    public bool distanceAvatar;
+
     private float maxDistance;
     private float travelDistance = 0;
 
@@ -76,7 +78,24 @@ public class AvatarProjectile : MonoBehaviour
         this.axis = axis;
         this.direction = direction;
 
-        this.maxDistance = maxDistance;
+        if (distanceAvatar) { 
+            this.maxDistance = maxDistance; 
+        }
+        else
+        {
+            this.maxDistance = 3;
+
+            if (axis)
+            {
+                gameObject.GetComponent<BoxCollider>().size = new Vector3(1f, 30f, 9f);
+            }
+            else
+            {
+                gameObject.GetComponent<BoxCollider>().size = new Vector3(9f, 30f, 1f);
+            }
+            
+        }
+
         
     }
 }

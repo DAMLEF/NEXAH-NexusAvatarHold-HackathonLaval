@@ -8,6 +8,7 @@ TagManager:
   - Marker
   - Laser
   - Grabbable
+  - Button
   layers:
   - Default
   - TransparentFX

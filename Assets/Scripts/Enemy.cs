@@ -9,12 +9,11 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public float attackSpeed;
 
-    // TODO: public
-    public bool axis;
-    public bool direction;
+    private bool axis;
+    private bool direction;
 
     public float speed;
-    public float maxDistance;
+    private float maxDistance;
     private float travelDistance = 0.0f;
 
     private GameObject targetLane;
@@ -59,7 +58,15 @@ public class Enemy : MonoBehaviour
             }
         }
 
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            removeHealth(collision.gameObject.GetComponent<LaserBounce>().hitDamage);
+            Destroy(collision.gameObject);
+        }
     }
 
     int getDirection()
@@ -85,6 +92,8 @@ public class Enemy : MonoBehaviour
 
         Vector3 spawnPos = targetLane.GetComponent<Lane>().getSpawnPosition();
         setupSpawn(spawnPos.x, spawnPos.y, spawnPos.z);
+
+        maxDistance = targetLane.GetComponent<Lane>().getLaneLength();
     }
 
     private void setupSpawn(float x, float y, float z)

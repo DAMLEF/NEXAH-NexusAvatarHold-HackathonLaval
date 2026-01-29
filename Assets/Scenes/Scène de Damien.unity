@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133149930}
   - component: {fileID: 133149929}
+  - component: {fileID: 133149931}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -148,7 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3244bd7101b1149b078c7a8c807141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  lanes: []
+  lanes:
+  - {fileID: 242083455}
 --- !u!4 &133149930
 Transform:
   m_ObjectHideFlags: 0
@@ -164,6 +166,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &133149931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133149928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f72cb858431f6e4b8e9517dd47a80fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WavesManager
+  timeBetweenWave: 15
+  timeBetweenEnemy: 2
+  timeBeforeStart: 5
+  difficultyCoefficient: 1
+  difficultyUpscale: 0.01
+  allEnemiesType:
+  - {fileID: 1401426647}
+  enemyStorage: {fileID: 926874419}
 --- !u!1 &242083455
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +231,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484c0977f8b43694689d324cbf83ae49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lane
+  axis: 0
+  direction: 0
+  length: 0
+  width: 3
+--- !u!1 &926874419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926874420}
+  m_Layer: 0
+  m_Name: EnemyStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &926874420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926874419}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -14.10349, y: 0, z: -7.96796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1401426647
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563e4ee681ca60642a3484efe759daca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  damage: 0
+  attackRange: 0
+  attackSpeed: 0
   axis: 1
   direction: 0
   speed: 1
@@ -559,6 +619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1722341675}
   - component: {fileID: 1722341674}
+  - component: {fileID: 1722341676}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -646,6 +707,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1722341676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722341673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1833304188
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,4 +858,5 @@ SceneRoots:
   - {fileID: 1833304192}
   - {fileID: 133149930}
   - {fileID: 1401426653}
+  - {fileID: 926874420}
   - {fileID: 242083456}

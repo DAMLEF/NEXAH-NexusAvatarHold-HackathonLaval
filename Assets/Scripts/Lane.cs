@@ -53,13 +53,17 @@ public class Lane : MonoBehaviour
 
         // On applique le facteur random sur la ligne de spawn
         float randomOffset = Random.Range(- width / 2f, width / 2f);
+        Debug.Log(randomOffset);
 
+        // On inverse l'axe de spawn car il est perpendiculaire à la direction
         if (axis)
         {
-            result.x += randomOffset;
-        }
-        else { 
+            // Ligne de spawn selon z
             result.z += randomOffset;
+        }
+        else {
+            // Ligne de spawn selon x
+            result.x += randomOffset;
         }
 
         return result;

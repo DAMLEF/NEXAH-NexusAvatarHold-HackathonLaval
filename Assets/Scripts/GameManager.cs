@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("MONEY : " + money);
+
         foreach (GameObject lane in lanes)
         {
             if (lane.GetComponent<Lane>().getHealth() <= 0)
@@ -25,10 +28,17 @@ public class GameManager : MonoBehaviour
                 Debug.Log("FIN DU JEU : Barricade détruite");
             }
         }
+
+    }
+
+    public void addMoney(int m)
+    {
+        money += m;
     }
 
     public List<GameObject> getLanes()
     {
         return lanes;
     }
+
 }

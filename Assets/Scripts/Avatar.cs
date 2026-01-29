@@ -10,15 +10,21 @@ public class Avatar : MonoBehaviour
     private float lastAttack;
 
     // TODO PUBLIC
-    public GameObject defendedLane;
+    private GameObject defendedLane;
 
     public GameObject projectile;
-    public GameObject avatarAttackStorage;
+    private GameObject avatarAttackStorage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
+    }
+
+    void Awake()
+    {
+        if (avatarAttackStorage == null)
+            avatarAttackStorage = GameObject.Find("AvatarAttackStorage");
     }
 
     // Update is called once per frame
@@ -30,18 +36,20 @@ public class Avatar : MonoBehaviour
 
             Vector3 colliderSize;
 
+            Debug.Log(avatarAttackStorage);
             GameObject attack = Instantiate(projectile, avatarAttackStorage.transform);
 
 
             if (axis)
             {
-                colliderSize = new Vector3(1f, 5f, 30f);
+                colliderSize = new Vector3(30f, 150f, 70f);
             }
             else
             {
-                colliderSize = new Vector3(30f, 5f, 1f);
+                colliderSize = new Vector3(70f, 150f, 30f);
             }
 
+            Debug.Log("LANE : " + defendedLane);
             attack.GetComponent<AvatarProjectile>().setupProjectile(transform.position.x, transform.position.y, transform.position.z, axis, direction, defendedLane.GetComponent<Lane>().getLaneLength(), damage);
             attack.GetComponent<BoxCollider>().size = colliderSize;
 
@@ -51,5 +59,10 @@ public class Avatar : MonoBehaviour
 
 
 
+    }
+
+    public void setupAvatar(GameObject lane)
+    {
+        defendedLane = lane;
     }
 }

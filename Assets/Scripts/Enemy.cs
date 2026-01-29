@@ -61,9 +61,23 @@ public class Enemy : MonoBehaviour
         return direction ? 1 : -1;
     }
 
-    void setupSpawn(float x, float z)
+    void removeHealth(int h)
     {
+        health -= h;
+        if (health < 0) {
+            Destroy(gameObject);
+        }
+    }
 
+    void setupSpawn(float x, float y, float z)
+    {
+        Vector3 pos;
+
+        pos.x = x;
+        pos.y = y;
+        pos.z = z;
+
+        transform.position = pos;
     }
 
 }

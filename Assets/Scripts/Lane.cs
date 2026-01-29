@@ -12,6 +12,8 @@ public class Lane : MonoBehaviour
     private float length;
     private float width;
 
+
+    private bool spawnPointSet = false;
     private float spawnHeight = 1.0f;
     private float spawnX;
     private float spawnZ;
@@ -26,6 +28,22 @@ public class Lane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (!spawnPointSet)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("SpawnPoint"))
+                {
+
+                    spawnX = child.position.x;
+                    spawnHeight = child.position.y;
+                    spawnZ = child.position.z;
+
+                    spawnPointSet = true;
+                }
+            }
+        }
+
     }
 }

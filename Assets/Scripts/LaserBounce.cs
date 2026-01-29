@@ -12,8 +12,7 @@ public class LaserBounce : MonoBehaviour
     public static int maxLifeTime;
     [SerializeField] private int maxLifeTimeEditor = 500;
 
-    public static int hitDamage;
-    [SerializeField] private int hitDamageEditor = 1;
+    public int hitDamage = 1;
 
     private int bouncesLeft;
     private int timeLeft;
@@ -24,7 +23,6 @@ public class LaserBounce : MonoBehaviour
         allowedBounces = allowedBouncesEditor;
         laserSpeed = laserSpeedEditor;
         maxLifeTime = maxLifeTimeEditor;
-        hitDamage = hitDamageEditor;
     }
 
     void ApplyVelocity()

@@ -38,7 +38,6 @@ public class Gun : MonoBehaviour
             GameObject laser = Instantiate(laserPrefab);
             laser.transform.position = shootingPoint.position;
             laser.transform.localRotation = shootingPoint.rotation;
-            
         }
     }
 }

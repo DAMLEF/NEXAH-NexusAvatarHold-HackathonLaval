@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     private int health;
 
     private int damage;
+    private float attackRange;
+    private float attackSpeed;
 
     public bool axis;
     public bool direction;
@@ -12,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float maxDistance;
     private float travelDistance = 0.0f;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,9 +26,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // On déplace l'adversaire seulement si il n'est pas au bout de la lane
-        if(travelDistance < maxDistance)
+        if (travelDistance < maxDistance)
         {
 
             int directionCoefficient = getDirection();
@@ -64,7 +67,7 @@ public class Enemy : MonoBehaviour
     void removeHealth(int h)
     {
         health -= h;
-        if (health < 0) {
+        if (health <= 0) {
             Destroy(gameObject);
         }
     }

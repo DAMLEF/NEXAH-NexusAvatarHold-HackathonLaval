@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class ToolManager : MonoBehaviour
@@ -18,6 +20,7 @@ public class ToolManager : MonoBehaviour
 
     private Tool currentTool = Tool.CONTROLLER;
     private InputDevice hand;
+    private HapticImpulsePlayer haptics;
     private GameObject controller;
     private Gun gun;
     private GrenadeManager grenadeManager;
@@ -26,6 +29,8 @@ public class ToolManager : MonoBehaviour
     void Start()
     {
         hand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+
+        haptics = GetComponent<HapticImpulsePlayer>();
 
         controller = gameObject.GetComponentInChildren<ControllerAnimator>().gameObject;
 
@@ -40,6 +45,7 @@ public class ToolManager : MonoBehaviour
 
     private bool bPressedLastFrame = false;
     private bool gripPressedLastFrame = false;
+    private Vector3 posLastFrame = Vector3.zero;
     void Update()
     {
         // Get "B" press to switch tool/mode
@@ -78,7 +84,11 @@ public class ToolManager : MonoBehaviour
                     {
                         rb.isKinematic = false;
                         rb.useGravity = true;
+                        // Apply velocity
+                        rb.AddForce((controller.transform.position - posLastFrame)/Time.deltaTime, ForceMode.VelocityChange);
                     }
+                    
+
                     heldItem = null;
                     // Callback to item script: kinematic/no grav if not in place, snap if it can
                     controller.SetActive(true);
@@ -87,6 +97,7 @@ public class ToolManager : MonoBehaviour
             }
         }
         bPressedLastFrame = bPressed;
+        posLastFrame = controller.transform.position;
 
     }
     void OnTriggerStay(Collider other)
@@ -117,5 +128,42 @@ public class ToolManager : MonoBehaviour
             currentTool = Tool.OBJECT;
         }
         gripPressedLastFrame = gripPressed;
+    }
+
+    // Move to a button press class that works on left hand too
+    private bool activatedOnce = false; // Allow to know if chaining activations or just coming back later
+    private void OnCollisionEnter(Collision collision)
+    {
+        activatedOnce = false;
+    }
+
+    private int pressFrames = 0;
+    private void OnCollisionStay(Collision collision)
+    {
+        // Get button data
+        if (collision.gameObject.CompareTag("Button"))
+        {
+            Button button = collision.gameObject.GetComponent<Button>();
+            if (button.transform.localPosition.y <= button.thresholdY)
+            {
+                pressFrames++;
+                // Button being pressed
+                // TODO Progress Bar
+                if (activatedOnce) haptics.SendHapticImpulse(1f, 0.1f); // Keep max haptics
+                else haptics.SendHapticImpulse(((float)pressFrames) / ((float)button.pressFramesToActivate), 0.1f); // Progressive strength
+                if (pressFrames == button.pressFramesToActivate)
+                {
+                    // Button activates (pressed long enough)
+                    button.OnActivate();
+                    activatedOnce = true;
+                    pressFrames = 0;
+                }
+            }
+            else
+            {
+                pressFrames = 0;
+            }
+        }
+        
     }
 }

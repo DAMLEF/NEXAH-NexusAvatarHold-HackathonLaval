@@ -23,7 +23,11 @@ public class SnapObject : MonoBehaviour
             
             // Snap
             item.transform.parent = transform;
-            if (objectSnapPosition) item.transform.localPosition = objectSnapPosition.localPosition;
+            if (objectSnapPosition) { 
+                item.transform.localPosition = objectSnapPosition.localPosition;
+                item.transform.localRotation = objectSnapPosition.localRotation;
+            }
+
         }
     }
 }

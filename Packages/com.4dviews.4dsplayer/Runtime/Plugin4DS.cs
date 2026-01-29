@@ -24,7 +24,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-
 namespace unity4dv
 {
     public enum OutRangeMode
@@ -1575,7 +1574,7 @@ namespace unity4dv
             UpdateMeshLiveJob job = (UpdateMeshLiveJob)_updateMeshJob;
             _updateMeshJobHandle = job.Schedule();
         }
-        
+
         private void UpdateMesh()
         {
             if (_dataSource == null || !isInitialized)
@@ -1613,7 +1612,7 @@ namespace unity4dv
 
             if (_newMeshAvailable)
             {
-                _nbVertices  = job.MeshDescriptor[0];
+                _nbVertices = job.MeshDescriptor[0];
                 _nbTriangles = job.MeshDescriptor[1];
 
                 _meshData.subMeshCount = 1;
@@ -1627,11 +1626,15 @@ namespace unity4dv
                 mesh.bounds = new Bounds((job.BBoxes[0] + job.BBoxes[1]) / 2.0f,
                                          job.BBoxes[1] - job.BBoxes[0]);
 
-                if (_boxCollider) {
+                if (_boxCollider)
+                {
                     _boxCollider.center = mesh.bounds.center;
-                    if (this.gameObject.transform.localScale.x < 0) {
+                    if (this.gameObject.transform.localScale.x < 0)
+                    {
                         _boxCollider.size = new Vector3(-mesh.bounds.size.x, mesh.bounds.size.y, mesh.bounds.size.z);
-                    } else {
+                    }
+                    else
+                    {
                         _boxCollider.size = mesh.bounds.size;
                     }
                 }
@@ -1647,9 +1650,38 @@ namespace unity4dv
 
                 ApplyAndDisposeWritableMeshData(_meshDataArray, mesh, updateFlags);
 
+                
+                int frameIndex = modelID;
+
+                Mesh copy = Instantiate(mesh);
+                copy.name = "4DS_Frame_Export";
+
+#if UNITY_EDITOR
+                UnityEditor.AssetDatabase.CreateAsset(
+                    copy,
+                    $"Assets/4DS_Extracted/Samuel/Frame{frameIndex:D3}.asset"
+                );
+                UnityEditor.AssetDatabase.SaveAssets();
+#endif
+
+                Debug.Log($"Mesh {frameIndex:D3} exporté !");
+
                 Texture2D texture = _textures[_currentTextureBuffer];
                 texture.LoadRawTextureData(job.Texture);
                 texture.Apply();
+
+                Texture2D textureCopy = Instantiate(texture);
+                textureCopy.name = "4DS_Texture_Export";
+
+#if UNITY_EDITOR
+                UnityEditor.AssetDatabase.CreateAsset(
+                    textureCopy,
+                    $"Assets/4DS_Extracted/Samuel/Frame{frameIndex:D3}_Texture.asset"
+                );
+                UnityEditor.AssetDatabase.SaveAssets();
+#endif
+
+                Debug.Log("Texture exportée !");
             }
 
             if (!_newMeshAvailable)

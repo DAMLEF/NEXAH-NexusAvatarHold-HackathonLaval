@@ -22,4 +22,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public List<GameObject> getLanes()
+    {
+        return lanes;
+    }
 }

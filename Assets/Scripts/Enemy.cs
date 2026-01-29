@@ -5,16 +5,19 @@ public class Enemy : MonoBehaviour
 
     private int health;
 
-    private int damage;
-    private float attackRange;
-    private float attackSpeed;
+    public int damage;
+    public float attackRange;
+    public float attackSpeed;
 
+    // TODO: public
     public bool axis;
     public bool direction;
 
     public float speed;
     public float maxDistance;
     private float travelDistance = 0.0f;
+
+    private GameObject targetLane;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -72,7 +75,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void setupSpawn(float x, float y, float z)
+    public void prepareEnemy(GameObject lane)
+    {
+
+        setTargetLane(lane);
+
+        axis = targetLane.GetComponent<Lane>().getAxis();
+        direction = targetLane.GetComponent<Lane>().getDirection();
+
+        Vector3 spawnPos = targetLane.GetComponent<Lane>().getSpawnPosition();
+        setupSpawn(spawnPos.x, spawnPos.y, spawnPos.z);
+    }
+
+    private void setupSpawn(float x, float y, float z)
     {
         Vector3 pos;
 
@@ -82,5 +97,11 @@ public class Enemy : MonoBehaviour
 
         transform.position = pos;
     }
+
+    private void setTargetLane(GameObject lane)
+    {
+        targetLane = lane;
+    }
+
 
 }

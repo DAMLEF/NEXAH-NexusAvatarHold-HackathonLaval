@@ -6,11 +6,11 @@ public class Lane : MonoBehaviour
 
     private int health;
 
-    private bool axis;
-    private bool direction;
+    public bool axis;
+    public bool direction;
 
-    private float length;
-    private float width;
+    public float length;
+    public float width;
 
 
     private bool spawnPointSet = false;
@@ -46,4 +46,28 @@ public class Lane : MonoBehaviour
         }
 
     }
+
+    public Vector3 getSpawnPosition()
+    {
+        Vector3 result = new Vector3(spawnX, spawnHeight, spawnZ);
+
+        // On applique le facteur random sur la ligne de spawn
+        float randomOffset = Random.Range(- width / 2f, width / 2f);
+
+        if (axis)
+        {
+            result.x += randomOffset;
+        }
+        else { 
+            result.z += randomOffset;
+        }
+
+        return result;
+
+    }
+
+    public bool getAxis() { return axis; }
+    public bool getDirection() { return direction; }
+    public float getLaneLength() { return length;  }
+
 }

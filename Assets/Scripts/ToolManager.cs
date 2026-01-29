@@ -6,6 +6,8 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class ToolManager : MonoBehaviour
 {
+    public Transform objectSnapPosition;
+    
     private enum Tool
     {
         CONTROLLER,
@@ -19,6 +21,7 @@ public class ToolManager : MonoBehaviour
     private GameObject controller;
     private Gun gun;
     private GrenadeManager grenadeManager;
+    private GameObject heldItem = null;
 
     void Start()
     {
@@ -31,12 +34,15 @@ public class ToolManager : MonoBehaviour
 
         grenadeManager = gameObject.GetComponentInChildren<GrenadeManager>();
         grenadeManager.gameObject.SetActive(false);
+
+        if (!objectSnapPosition) Debug.LogWarning("No object snap position set, objects will no snap to the hand when grabbed");
     }
 
     private bool bPressedLastFrame = false;
+    private bool gripPressedLastFrame = false;
     void Update()
     {
-        // Get "B" press to switch object
+        // Get "B" press to switch tool/mode
         bool bPressed = false;
         bool success = hand.TryGetFeatureValue(CommonUsages.secondaryButton, out bPressed);
         if (success && bPressed && !bPressedLastFrame)
@@ -66,13 +72,50 @@ public class ToolManager : MonoBehaviour
 
                 case Tool.OBJECT:
                     // Drop object
+                    heldItem.transform.parent = null;
+                    Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+                    if (rb)
+                    {
+                        rb.isKinematic = false;
+                        rb.useGravity = true;
+                    }
+                    heldItem = null;
                     // Callback to item script: kinematic/no grav if not in place, snap if it can
-                    currentTool= Tool.CONTROLLER;
+                    controller.SetActive(true);
+                    currentTool = Tool.CONTROLLER;
                     break;
             }
         }
         bPressedLastFrame = bPressed;
 
-        // TODO if in CONTROLLER, detect trigger to grab object (either in Update or OnCollisionRemain)
+    }
+    void OnTriggerStay(Collider other)
+    {
+        // Filter out un-grabbable items
+        GameObject item = other.gameObject;
+        if (!item.CompareTag("Grabbable")) return;
+        // Get "Grip" press to grab object if in CONTROLLER mode
+        bool gripPressed = false;
+        bool success = hand.TryGetFeatureValue(CommonUsages.gripButton, out gripPressed);
+        if (currentTool == Tool.CONTROLLER && success && gripPressed && !gripPressedLastFrame)
+        {
+            // Make item follow hand movements
+            item.transform.SetParent(transform);
+            Rigidbody rb = item.GetComponent<Rigidbody>();
+            if (rb)
+            {
+                rb.isKinematic = true;
+                rb.useGravity = false;
+            }
+            heldItem = item;
+
+            // Snap to hand center
+            if (objectSnapPosition) item.transform.localPosition = objectSnapPosition.localPosition;
+
+            // Change hand state
+            controller.SetActive(false);
+            currentTool = Tool.OBJECT;
+        }
+        gripPressedLastFrame = gripPressed;
     }
 }

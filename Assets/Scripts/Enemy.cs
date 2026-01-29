@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    private int health;
+    // TODO public
+    public int health = 10;
 
     public int damage;
     public float attackRange;
     public float attackSpeed;
+    private float lastAttack;
 
     private bool axis;
     private bool direction;
@@ -58,6 +59,21 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // Phase d'attaque
+        if(maxDistance - travelDistance <= attackRange)
+        {
+            // Si l'adversaire est assez proche d'une barrière
+            if (Time.time - lastAttack >= attackSpeed)
+            {
+                // Si l'adversaire n'a pas déjà attaqué recemment
+                Debug.Log(targetLane);
+                targetLane.GetComponent<Lane>().removeHealth(damage);
+                lastAttack = Time.time;
+
+            }
+        }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -74,7 +90,7 @@ public class Enemy : MonoBehaviour
         return direction ? 1 : -1;
     }
 
-    void removeHealth(int h)
+    public void removeHealth(int h)
     {
         health -= h;
         if (health <= 0) {
@@ -93,7 +109,9 @@ public class Enemy : MonoBehaviour
         Vector3 spawnPos = targetLane.GetComponent<Lane>().getSpawnPosition();
         setupSpawn(spawnPos.x, spawnPos.y, spawnPos.z);
 
-        maxDistance = targetLane.GetComponent<Lane>().getLaneLength();
+        maxDistance = targetLane.GetComponent<Lane>().getLaneLength() - 1;
+
+        lastAttack = Time.time;
     }
 
     private void setupSpawn(float x, float y, float z)

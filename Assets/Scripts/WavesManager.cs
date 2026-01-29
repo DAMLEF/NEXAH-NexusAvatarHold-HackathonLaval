@@ -43,7 +43,6 @@ public class WavesManager : MonoBehaviour
 
                 List<GameObject> lanes = GetComponent<GameManager>().getLanes();
 
-
                 // On spawn un ennemi
                 GameObject enemy = Instantiate(allEnemiesType[Random.Range(0, allEnemiesType.Count)], transform.position, Quaternion.identity);
                 enemy.GetComponent<Enemy>().prepareEnemy(lanes[Random.Range(0, lanes.Count)]);
@@ -53,9 +52,11 @@ public class WavesManager : MonoBehaviour
                 timeLastSpawn = Time.time;
             }
 
-            if(enemiesRemaining == 0 && enemyStorage.transform.childCount == 0 )
+            if(enemiesRemaining <= 0 && enemyStorage.transform.childCount <= 0 )
             {
                 Debug.Log("fin de vague");
+                inWave = false;
+                endWaveTime = Time.time;
             }
 
         }
@@ -69,7 +70,6 @@ public class WavesManager : MonoBehaviour
         }
 
     }
-
 
     void waveInit()
     {

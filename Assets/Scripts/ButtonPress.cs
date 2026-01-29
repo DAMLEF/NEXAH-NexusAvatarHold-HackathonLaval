@@ -50,7 +50,7 @@ public class ButtonPress : MonoBehaviour
                 if (pressFrames == button.pressFramesToActivate)
                 {
                     // Button activates (pressed long enough)
-                    button.OnActivate();
+                    //button.OnActivate(); TODO put Damien's method
                     consecutiveActivations++;
                     pressFrames = 0;
                 }

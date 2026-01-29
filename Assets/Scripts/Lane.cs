@@ -4,7 +4,7 @@ using UnityEngine;
 public class Lane : MonoBehaviour
 {
 
-    private int health;
+    private int health= 100;
 
     public bool axis;
     public bool direction;
@@ -28,6 +28,8 @@ public class Lane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("HP BARRICADE : " + health);
 
         if (!spawnPointSet)
         {
@@ -53,7 +55,6 @@ public class Lane : MonoBehaviour
 
         // On applique le facteur random sur la ligne de spawn
         float randomOffset = Random.Range(- width / 2f, width / 2f);
-        Debug.Log(randomOffset);
 
         // On inverse l'axe de spawn car il est perpendiculaire à la direction
         if (axis)
@@ -70,8 +71,20 @@ public class Lane : MonoBehaviour
 
     }
 
+    public void removeHealth(int h)
+    {
+        health -= h;
+
+        // Si la barricade est détruite alors le GameManager le détecte et met fin au jeu
+    }
+
     public bool getAxis() { return axis; }
     public bool getDirection() { return direction; }
     public float getLaneLength() { return length;  }
+    public float getHealth()
+    {
+        return health;
+    }
+
 
 }

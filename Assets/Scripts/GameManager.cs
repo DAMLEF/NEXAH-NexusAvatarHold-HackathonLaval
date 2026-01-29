@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> lanes;
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +18,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (GameObject lane in lanes)
+        {
+            if (lane.GetComponent<Lane>().getHealth() <= 0)
+            {
+                Debug.Log("FIN DU JEU : Barricade détruite");
+            }
+        }
     }
 
     public List<GameObject> getLanes()

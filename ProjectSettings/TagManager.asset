@@ -9,6 +9,7 @@ TagManager:
   - Marker
   - Laser
   - Grabbable
+  - Enemy
   layers:
   - Default
   - TransparentFX

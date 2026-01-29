@@ -1,8 +1,17 @@
 {
   "dependencies": {
+    "com.4dviews.4dsplayer": {
+      "version": "file:com.4dviews.4dsplayer",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.timeline": "1.7.6",
+        "com.unity.burst": "1.8.18"
+      }
+    },
     "com.unity.burst": {
       "version": "1.8.27",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",

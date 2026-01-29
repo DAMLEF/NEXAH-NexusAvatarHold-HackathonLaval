@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // TODO public
     public int health = 10;
 
     public int damage;
@@ -18,6 +17,8 @@ public class Enemy : MonoBehaviour
     private float travelDistance = 0.0f;
 
     private GameObject targetLane;
+
+    private bool alreadyGivenMoney = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,9 +67,9 @@ public class Enemy : MonoBehaviour
             if (Time.time - lastAttack >= attackSpeed)
             {
                 // Si l'adversaire n'a pas déjà attaqué recemment
-                Debug.Log(targetLane);
                 targetLane.GetComponent<Lane>().removeHealth(damage);
                 lastAttack = Time.time;
+
 
             }
         }
@@ -94,6 +95,15 @@ public class Enemy : MonoBehaviour
     {
         health -= h;
         if (health <= 0) {
+
+            if (!alreadyGivenMoney)
+            {
+                // On ajotue de l'argent à chaque kill
+                GameObject.Find("GameManager").GetComponent<GameManager>().addMoney(1);
+                alreadyGivenMoney = true;
+            }
+
+
             Destroy(gameObject);
         }
     }

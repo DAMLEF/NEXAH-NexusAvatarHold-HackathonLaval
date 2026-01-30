@@ -12,7 +12,7 @@ public class AllyZone : MonoBehaviour
 
     // Paramètres zone des alliés
     private GameObject parentLane;
-    public float lateralOffset = 0.7f;
+    public float lateralOffset = 0.8f;
 
     public AudioSource zoneAudio;
 

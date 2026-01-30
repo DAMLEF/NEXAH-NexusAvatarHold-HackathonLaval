@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         }
         else if (action == 3)
         {
-            GameObject.Find("Gun").GetComponent<Gun>().Upgrade();
+            Gun.Upgrade();
             return true;
         }
         else

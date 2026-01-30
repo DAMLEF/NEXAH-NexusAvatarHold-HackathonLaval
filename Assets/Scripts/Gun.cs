@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
         if (shootingPoint == null) Debug.LogError("No child of Gun with tag 'Marker' to shoot from");
     }
 
-    public void Upgrade()
+    public static void Upgrade()
     {
         cooldown = 0.98f * cooldown;
         gunDamage += 1;

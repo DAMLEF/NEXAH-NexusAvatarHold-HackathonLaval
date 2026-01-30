@@ -17,9 +17,11 @@ public class WristInformation : MonoBehaviour
     public TMP_Text cooldownText;
 
 
+    int tick = 0;
     void Update()
     {
-        if (GameObject.Find("GameManager") != null)
+        tick++;
+        if (tick%5 ==0 && GameObject.Find("GameManager") != null)
         {
             moneyText.text = GameObject.Find("GameManager").GetComponent<GameManager>().getMoney().ToString();
 
@@ -33,7 +35,7 @@ public class WristInformation : MonoBehaviour
 
             dmgText.text = Gun.gunDamage.ToString() + " DMG";
             bounceText.text = LaserBounce.allowedBounces.ToString() + " bounces";
-            cooldownText.text = (100 * (Gun.cooldown / Gun.cooldownBase)).ToString() + "% of base cooldown";
+            cooldownText.text = (Mathf.FloorToInt(100 * (Gun.cooldown / Gun.cooldownBase))).ToString() + "% of base cooldown";
         }
 
     }

@@ -9,7 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 public class ToolManager : MonoBehaviour
 {
     public Transform objectSnapPosition;
-    
+    public GameObject avatarPreviews;
     private enum Tool
     {
         CONTROLLER,
@@ -78,6 +78,7 @@ public class ToolManager : MonoBehaviour
                     break;
 
                 case Tool.OBJECT:
+                    avatarPreviews.SetActive(false);
                     // Drop object
                     heldItem.transform.parent = null;
                     Rigidbody rb = heldItem.GetComponent<Rigidbody>();
@@ -111,6 +112,7 @@ public class ToolManager : MonoBehaviour
         bool success = hand.TryGetFeatureValue(CommonUsages.gripButton, out gripPressed);
         if (currentTool == Tool.CONTROLLER && success && gripPressed && !gripPressedLastFrame)
         {
+            avatarPreviews.SetActive(true);
             // Make item follow hand movements
             item.transform.SetParent(transform);
             Rigidbody rb = item.GetComponent<Rigidbody>();

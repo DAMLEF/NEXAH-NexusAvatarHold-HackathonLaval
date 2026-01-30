@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2590462854566639489}
   - component: {fileID: 2549751393444782835}
   - component: {fileID: -4881112268055666124}
+  - component: {fileID: 1617626278305245325}
   m_Layer: 0
   m_Name: AvatarGrenadeFigurine
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,6 +76,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1617626278305245325
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752684257503671409}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4, y: 0.45, z: 0.4}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &910209392413995402
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +108,7 @@ GameObject:
   - component: {fileID: 5234749468192366409}
   - component: {fileID: 779419508172107288}
   - component: {fileID: 2836498463691335910}
-  - component: {fileID: 324139887341733499}
+  - component: {fileID: 7193148775349570081}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -166,8 +188,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &324139887341733499
-CapsuleCollider:
+--- !u!64 &7193148775349570081
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -183,12 +205,11 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Enabled: 0
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5779204923736162633
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +221,7 @@ GameObject:
   - component: {fileID: 708140324494760603}
   - component: {fileID: 4808954354568685142}
   - component: {fileID: 4244650365377410496}
+  - component: {fileID: 3265571860048967980}
   m_Layer: 0
   m_Name: AvatarGrenadeFigurineMesh
   m_TagString: Untagged
@@ -279,3 +301,25 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3265571860048967980
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5779204923736162633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 80e7c92743fb82147a17f502c06cd5ab, type: 2}

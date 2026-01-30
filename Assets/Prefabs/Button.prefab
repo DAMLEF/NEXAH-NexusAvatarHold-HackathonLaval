@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 1132383831769271459}
   - component: {fileID: 1217166800531636924}
   - component: {fileID: 2930315915277915421}
+  - component: {fileID: 2250604162181643128}
   m_Layer: 0
   m_Name: Pressable
   m_TagString: Button
@@ -334,3 +335,17 @@ SpringJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 100
   m_ConnectedMassScale: 1000
+--- !u!114 &2250604162181643128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136868038975013915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecdc3d3097e71648bb3a7d7dfae6862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopButton
+  action: 0
+  price: 0

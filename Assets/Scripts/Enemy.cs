@@ -79,8 +79,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("COLLISION");
         if (collision.gameObject.CompareTag("Laser"))
         {
+            Debug.Log("IMPACT");
             removeHealth(collision.gameObject.GetComponent<LaserBounce>().hitDamage);
             Destroy(collision.gameObject);
         }

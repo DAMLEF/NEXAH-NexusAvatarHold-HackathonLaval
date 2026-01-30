@@ -3,6 +3,7 @@ using UnityEngine;
 public class SnapObject : MonoBehaviour
 {
     public Transform objectSnapPosition;
+    public GameObject allyZone;
 
     private void Start()
     {
@@ -20,14 +21,27 @@ public class SnapObject : MonoBehaviour
                 rb.isKinematic = true;
                 rb.useGravity = false;
             }
-            
+
             // Snap
-            item.transform.parent = transform;
-            if (objectSnapPosition) { 
-                item.transform.localPosition = objectSnapPosition.localPosition;
-                item.transform.localRotation = objectSnapPosition.localRotation;
+            if (!item.GetComponent<Figurine>().getPlacementStatus())
+            {
+                GameObject avatar = item.GetComponent<Figurine>().getAvatar();
+                allyZone.GetComponent<AllyZone>().addAvatar(avatar);
+
+                item.GetComponent<Figurine>().figurinePlaced();
+
+                
             }
 
+
+            item.transform.parent = transform;
+            //if (objectSnapPosition) { 
+            //   item.transform.localPosition = objectSnapPosition.localPosition;
+            //    item.transform.localRotation = objectSnapPosition.localRotation;
+            //}
+            Destroy(item);
+
         }
+
     }
 }

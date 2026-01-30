@@ -16,7 +16,7 @@ public class ShopButton : MonoBehaviour
 
     private void Awake()
     {
-        gm = GameObject.Find("GameObject");
+        gm = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -41,10 +41,14 @@ public class ShopButton : MonoBehaviour
 
     public void purchase()
     {
+        Debug.Log("Phase d'achat");
         if (canBeBuy())
         {
+            Debug.Log("Achat confirmé - lancement de l'action");
+
             if (gm.GetComponent<GameManager>().makeShopAction(action))
             {
+                Debug.Log("Action validé");
                 gm.GetComponent<GameManager>().removeMoney(price);
             }
 

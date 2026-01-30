@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2403782784997578968}
   - component: {fileID: 4163456918096160019}
   - component: {fileID: 7997050319355315194}
+  - component: {fileID: 1572423423468704174}
   m_Layer: 0
   m_Name: AvatarGun
   m_TagString: Untagged
@@ -146,3 +147,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d570f2cd62852dc44a3693f92f0a6ff9, type: 2}
   - {fileID: 2100000, guid: a4bc43e6ec2c48e4b90bc142e7801e87, type: 2}
   frameDelay: 0.2
+--- !u!114 &1572423423468704174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854279947196805089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1f9f10c16a58243a3e82982c870b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Avatar
+  damage: 1
+  attackSpeed: 2
+  projectile: {fileID: 784612042241418883, guid: 09bbd8764ce22344eac2d20a845385e1, type: 3}

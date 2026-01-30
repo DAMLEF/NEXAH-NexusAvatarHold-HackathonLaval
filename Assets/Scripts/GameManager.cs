@@ -25,10 +25,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void OnValidate()
-    {
-        makeShopAction(0);
-    }
 
     // Update is called once per frame
     void Update()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8273627773080635891}
   - component: {fileID: 536943802971289111}
   - component: {fileID: 4393867998726236503}
+  - component: {fileID: -4879672787619637997}
   m_Layer: 0
   m_Name: AvatarLightSaber
   m_TagString: Untagged
@@ -176,3 +177,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e137319981df0ee4082047dd2d6165dc, type: 2}
   - {fileID: 2100000, guid: 6a0f2b68235f8c846836653b723b5e12, type: 2}
   frameDelay: 0.05
+--- !u!114 &-4879672787619637997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132155152900877763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1f9f10c16a58243a3e82982c870b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Avatar
+  damage: 3
+  attackSpeed: 3
+  projectile: {fileID: 2945189403584512344, guid: 6d1189884f484e24a88456563d7e37b8, type: 3}

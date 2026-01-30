@@ -35,8 +35,8 @@ public class AllyZone : MonoBehaviour
     void Update()
     {
 
-
-        if (avatars.Count < 1)
+        // TODO : Debug spawn avatar
+        if (avatars.Count < 1 && false)
         {
             Debug.Log("LANE :" + parentLane.GetComponent<Lane>().getAxis());
             GameObject avatar = Instantiate(avatarGO);
@@ -53,8 +53,9 @@ public class AllyZone : MonoBehaviour
         if(avatars.Count < 3)
         {
 
+            GameObject avatarInstance = Instantiate(avatar);
             
-            avatars.Add(avatar);
+            avatars.Add(avatarInstance);
 
             Vector3 pos = transform.position;
 
@@ -82,8 +83,8 @@ public class AllyZone : MonoBehaviour
                 }
             }
 
-            avatar.transform.position = pos;
-            avatar.GetComponent<Avatar>().setupAvatar(parentLane);
+            avatarInstance.transform.position = pos;
+            avatarInstance.GetComponent<Avatar>().setupAvatar(parentLane);
 
         }
         else

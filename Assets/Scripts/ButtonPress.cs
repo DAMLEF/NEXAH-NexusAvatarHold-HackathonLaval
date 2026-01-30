@@ -38,6 +38,7 @@ public class ButtonPress : MonoBehaviour
         if (collision.gameObject.CompareTag("Button"))
         {
             Button button = collision.gameObject.GetComponent<Button>();
+            ShopButton shopInteraction = collision.gameObject.GetComponent<ShopButton>();
             if (button.transform.localPosition.y <= button.thresholdY)
             {
                 // Button being pressed
@@ -52,7 +53,13 @@ public class ButtonPress : MonoBehaviour
                 if (progress >= 1)
                 {
                     // Button activates (pressed long enough)
+
+
+
                     //button.OnActivate(); TODO put Damien's method
+                    shopInteraction.purchase();
+
+
                     consecutiveActivations++;
                     pressFrames = 0;
                 }

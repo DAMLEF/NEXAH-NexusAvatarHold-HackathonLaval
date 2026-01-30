@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -8,6 +9,8 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public float attackSpeed;
     private float lastAttack;
+
+    public AudioSource hurtSource;
 
     private bool axis;
     private bool direction;
@@ -79,10 +82,8 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("COLLISION");
         if (collision.gameObject.CompareTag("Laser"))
         {
-            Debug.Log("IMPACT");
             removeHealth(collision.gameObject.GetComponent<LaserBounce>().hitDamage);
             Destroy(collision.gameObject);
         }
@@ -100,6 +101,7 @@ public class Enemy : MonoBehaviour
 
     public void removeHealth(int h)
     {
+        if (hurtSource) hurtSource.Play();
         health -= h;
         if (health <= 0) {
 

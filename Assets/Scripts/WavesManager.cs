@@ -15,6 +15,8 @@ public class WavesManager : MonoBehaviour
 
     public GameObject enemyStorage;
 
+    public AudioSource endWave;
+
     private int waves = 0;
     private bool inWave = false;
     private float endWaveTime;
@@ -54,6 +56,7 @@ public class WavesManager : MonoBehaviour
 
             if(enemiesRemaining <= 0 && enemyStorage.transform.childCount <= 0 )
             {
+                if (endWave) endWave.Play();
                 Debug.Log("fin de vague");
                 inWave = false;
                 endWaveTime = Time.time;

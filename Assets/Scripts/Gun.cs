@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public static int gunDamage = 1;
     private Transform shootingPoint;
     private InputDevice hand;
+    public AudioSource gunAudio;
     void Start()
     {
         cooldown = cooldownBase;
@@ -44,6 +45,8 @@ public class Gun : MonoBehaviour
         hand.TryGetFeatureValue(CommonUsages.triggerButton, out triggerPressed);
         if (triggerPressed)
         {
+            if (gunAudio) gunAudio.Play();
+
             ticking = cooldown + 1;
 
             GameObject laser = Instantiate(laserPrefab);

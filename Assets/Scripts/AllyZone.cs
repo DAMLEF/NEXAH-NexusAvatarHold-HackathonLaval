@@ -14,6 +14,8 @@ public class AllyZone : MonoBehaviour
     private GameObject parentLane;
     public float lateralOffset = 0.7f;
 
+    public AudioSource zoneAudio;
+
     private List<GameObject> avatars = new List<GameObject>();
 
 
@@ -52,6 +54,7 @@ public class AllyZone : MonoBehaviour
     {
         if(avatars.Count < 3)
         {
+            if (zoneAudio) { zoneAudio.Play(); }
 
             GameObject avatarInstance = Instantiate(avatar);
             

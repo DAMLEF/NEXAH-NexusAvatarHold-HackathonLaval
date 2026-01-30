@@ -13,6 +13,8 @@ public class Lane : MonoBehaviour
     public float length;
     public float width;
 
+    public AudioSource attackedSound;
+
 
     private bool spawnPointSet = false;
     private float spawnHeight = 1.0f;
@@ -73,7 +75,8 @@ public class Lane : MonoBehaviour
     }
 
     public void removeHealth(int h)
-    {
+    {   
+        if (attackedSound) attackedSound.Play();
         health -= h;
 
         // Si la barricade est détruite alors le GameManager le détecte et met fin au jeu

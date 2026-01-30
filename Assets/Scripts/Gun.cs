@@ -4,11 +4,11 @@ using UnityEngine.XR;
 
 public class Gun : MonoBehaviour
 {
-    public float cooldownBase = 30;
-    private float cooldown;
+    public static float cooldownBase = 30;
+    [HideInInspector] public static float cooldown;
     public GameObject laserPrefab;
     public Transform laserStorage; // Hierachy management
-    public int gunDamage = 1;
+    public static int gunDamage = 1;
     private Transform shootingPoint;
     private InputDevice hand;
     void Start()
@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
         if (shootingPoint == null) Debug.LogError("No child of Gun with tag 'Marker' to shoot from");
     }
 
-    private void Upgrade()
+    public void Upgrade()
     {
         cooldown = 0.98f * cooldown;
         gunDamage += 1;

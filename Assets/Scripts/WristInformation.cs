@@ -11,9 +11,11 @@ public class WristInformation : MonoBehaviour
     public Image cyanBar;
     public Image yellowBar;
     public Image magentaBar;
+    public TMP_Text grenadeAmountText;
     public TMP_Text dmgText;
     public TMP_Text bounceText;
     public TMP_Text cooldownText;
+
 
     void Update()
     {
@@ -27,15 +29,14 @@ public class WristInformation : MonoBehaviour
             cyanBar.fillAmount = (float)lanes[1].GetComponent<Lane>().getHealth() / (float)lanes[1].GetComponent<Lane>().getMaxHealth();
             magentaBar.fillAmount = (float)lanes[2].GetComponent<Lane>().getHealth() / (float)lanes[2].GetComponent<Lane>().getMaxHealth();
 
+            grenadeAmountText.text = GameObject.Find("GameManager").GetComponent<GameManager>().getGrenades().ToString();
 
-            if (GameObject.Find("Gun") != null)
-            {
-                //dmgText.text = GameObject.Find("Gun").GetComponent<Gun>().hitDamage.toString();
-            }
-
+            dmgText.text = Gun.gunDamage.ToString() + " DMG";
+            bounceText.text = LaserBounce.allowedBounces.ToString() + " bounces";
+            cooldownText.text = (100 * (Gun.cooldown / Gun.cooldownBase)).ToString() + "% of base cooldown";
         }
 
-        
-    
     }
-}
+
+} 
+ 

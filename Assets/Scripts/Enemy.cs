@@ -125,6 +125,37 @@ public class Enemy : MonoBehaviour
 
         maxDistance = targetLane.GetComponent<Lane>().getLaneLength() - 1;
 
+
+        int xRotation = -90;
+        int yRotation = 90;
+        int zRotation = 0;
+
+        if (axis)
+        {
+            if (direction)
+            {
+                yRotation += 180;
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            if (direction)
+            {
+                yRotation -= 90;
+            }
+            else
+            {
+                yRotation += 90;
+            }
+
+        }
+
+        transform.Rotate(new Vector3(xRotation, yRotation, zRotation));
+
         lastAttack = Time.time;
     }
 

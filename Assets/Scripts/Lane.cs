@@ -4,7 +4,8 @@ using UnityEngine;
 public class Lane : MonoBehaviour
 {
 
-    private int health= 100;
+    private int health = 100;
+    private int maxHealth;
 
     public bool axis;
     public bool direction;
@@ -22,7 +23,7 @@ public class Lane : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        maxHealth = health;
     }
 
     // Update is called once per frame
@@ -77,6 +78,9 @@ public class Lane : MonoBehaviour
 
         // Si la barricade est détruite alors le GameManager le détecte et met fin au jeu
     }
+
+
+    public int getMaxHealth() {  return maxHealth; }
 
     public bool getAxis() { return axis; }
     public bool getDirection() { return direction; }

@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void prepareEnemy(GameObject lane)
+    public void prepareEnemy(GameObject lane, float difficultyCoefficient)
     {
 
         setTargetLane(lane);
@@ -118,6 +118,8 @@ public class Enemy : MonoBehaviour
 
         Vector3 spawnPos = targetLane.GetComponent<Lane>().getSpawnPosition();
         setupSpawn(spawnPos.x, spawnPos.y, spawnPos.z);
+
+        health = (int)(difficultyCoefficient * health);
 
         maxDistance = targetLane.GetComponent<Lane>().getLaneLength() - 1;
 

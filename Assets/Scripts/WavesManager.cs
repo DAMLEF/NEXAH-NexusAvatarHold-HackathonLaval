@@ -45,7 +45,7 @@ public class WavesManager : MonoBehaviour
 
                 // On spawn un ennemi
                 GameObject enemy = Instantiate(allEnemiesType[Random.Range(0, allEnemiesType.Count)], transform.position, Quaternion.identity);
-                enemy.GetComponent<Enemy>().prepareEnemy(lanes[Random.Range(0, lanes.Count)]);
+                enemy.GetComponent<Enemy>().prepareEnemy(lanes[Random.Range(0, lanes.Count)], difficultyCoefficient);
                 enemy.transform.SetParent(enemyStorage.transform);  // On le range dans le storage
 
                 enemiesRemaining--;

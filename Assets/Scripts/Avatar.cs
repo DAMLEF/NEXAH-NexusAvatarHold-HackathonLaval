@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Avatar : MonoBehaviour
 {
-    public bool axis;
-    public bool direction;
+    private bool axis;
+    private bool direction;
 
     public int damage;
     public float attackSpeed;
@@ -50,8 +50,9 @@ public class Avatar : MonoBehaviour
             }
 
             Debug.Log("LANE : " + defendedLane);
-            attack.GetComponent<AvatarProjectile>().setupProjectile(transform.position.x, transform.position.y, transform.position.z, axis, direction, defendedLane.GetComponent<Lane>().getLaneLength(), damage);
             attack.GetComponent<BoxCollider>().size = colliderSize;
+            attack.GetComponent<AvatarProjectile>().setupProjectile(transform.position.x, transform.position.y, transform.position.z, axis, direction, defendedLane.GetComponent<Lane>().getLaneLength(), damage);
+
 
 
             lastAttack = Time.time;
@@ -64,5 +65,9 @@ public class Avatar : MonoBehaviour
     public void setupAvatar(GameObject lane)
     {
         defendedLane = lane;
+
+        axis = defendedLane.GetComponent<Lane>().getAxis();
+        direction = defendedLane.GetComponent<Lane>().getDirection();
+
     }
 }

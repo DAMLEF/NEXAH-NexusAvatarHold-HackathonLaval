@@ -36,8 +36,9 @@ public class AllyZone : MonoBehaviour
     {
 
 
-        if (avatars.Count < 3)
+        if (avatars.Count < 1)
         {
+            Debug.Log("LANE :" + parentLane.GetComponent<Lane>().getAxis());
             GameObject avatar = Instantiate(avatarGO);
             addAvatar(avatar);
         }

@@ -57,7 +57,7 @@ public class Lane : MonoBehaviour
         Vector3 result = new Vector3(spawnX, spawnHeight, spawnZ);
 
         // On applique le facteur random sur la ligne de spawn
-        float randomOffset = Random.Range(- width / 2f, width / 2f);
+        float randomOffset = Random.Range(- width / 4f, width / 4f);
 
         // On inverse l'axe de spawn car il est perpendiculaire à la direction
         if (axis)

@@ -489,8 +489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   health: 5
+  grenadeDamage: 10
   damage: 1
-  attackRange: 3
+  attackRange: 1
   attackSpeed: 2
   hurtSource: {fileID: 984020493056829922}
   speed: 1

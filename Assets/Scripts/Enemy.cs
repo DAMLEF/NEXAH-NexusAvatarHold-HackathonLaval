@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health = 10;
+    public int grenadeDamage = 10;
 
     public int damage;
     public float attackRange;
@@ -90,7 +91,7 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Grenade"))
         {
-            removeHealth(collision.gameObject.GetComponent<Grenade>().hitDamage);
+            removeHealth(grenadeDamage);
         }
     }
 

@@ -41,7 +41,7 @@ public class GrenadeManager : MonoBehaviour
         bool success = hand.TryGetFeatureValue(CommonUsages.gripButton, out gripPressed);
 
         // Initialise grenade
-        if (!currentGrenade && success && gripPressed && !gripPressedLastFrame)
+        if (!currentGrenade && success && gripPressed && !gripPressedLastFrame && GameObject.Find("GameManager").GetComponent<GameManager>().getGrenades() > 0)
         {
             currentGrenade = GenerateGrenade();
 
@@ -59,6 +59,7 @@ public class GrenadeManager : MonoBehaviour
                 rb.AddForce((currentGrenade.transform.position - posLastFrame) / Time.deltaTime, ForceMode.VelocityChange);
             }
             currentGrenade = null;
+            GameObject.Find("GameManager").GetComponent<GameManager>().useGrenade();
         }
 
         // update last grenade position to know speed

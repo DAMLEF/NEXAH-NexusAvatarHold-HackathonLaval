@@ -115,4 +115,8 @@ public class GameManager : MonoBehaviour
         return grenades;
     }
 
+    public void useGrenade()
+    {
+        grenades--;
+    }
 }

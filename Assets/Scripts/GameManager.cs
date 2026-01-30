@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -36,7 +37,10 @@ public class GameManager : MonoBehaviour
         {
             if (lane.GetComponent<Lane>().getHealth() <= 0)
             {
+                // TODO : revoir la fin du jeu
                 Debug.Log("FIN DU JEU : Barricade détruite");
+                SceneManager.LoadScene("Scène Finale");
+
             }
         }
 
@@ -104,6 +108,11 @@ public class GameManager : MonoBehaviour
     public List<GameObject> getLanes()
     {
         return lanes;
+    }
+
+    public int getGrenades()
+    {
+        return grenades;
     }
 
 }

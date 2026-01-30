@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class ToolManager : MonoBehaviour
@@ -40,6 +42,7 @@ public class ToolManager : MonoBehaviour
 
     private bool bPressedLastFrame = false;
     private bool gripPressedLastFrame = false;
+    private Vector3 posLastFrame = Vector3.zero;
     void Update()
     {
         // Get "B" press to switch tool/mode
@@ -64,8 +67,12 @@ public class ToolManager : MonoBehaviour
                     break;
 
                 case Tool.GRENADE:
-                    // Switch back to controller
+                    // Destroy current grenade, Switch back to controller
+                    Destroy(grenadeManager.currentGrenade);
+                    grenadeManager.currentGrenade = null;
+
                     grenadeManager.gameObject.SetActive(false);
+
                     controller.SetActive(true);
                     currentTool = Tool.CONTROLLER;
                     break;
@@ -78,7 +85,11 @@ public class ToolManager : MonoBehaviour
                     {
                         rb.isKinematic = false;
                         rb.useGravity = true;
+                        // Apply velocity
+                        rb.AddForce((controller.transform.position - posLastFrame)/Time.deltaTime, ForceMode.VelocityChange);
                     }
+                    
+
                     heldItem = null;
                     // Callback to item script: kinematic/no grav if not in place, snap if it can
                     controller.SetActive(true);
@@ -87,6 +98,7 @@ public class ToolManager : MonoBehaviour
             }
         }
         bPressedLastFrame = bPressed;
+        posLastFrame = controller.transform.position;
 
     }
     void OnTriggerStay(Collider other)
@@ -118,4 +130,6 @@ public class ToolManager : MonoBehaviour
         }
         gripPressedLastFrame = gripPressed;
     }
+
+    
 }

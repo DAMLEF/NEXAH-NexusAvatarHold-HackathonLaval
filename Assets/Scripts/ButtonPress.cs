@@ -17,6 +17,8 @@ public class ButtonPress : MonoBehaviour
         haptics = GetComponent<HapticImpulsePlayer>();
         if (!chargeBar) Debug.LogError("Charge bar canva not found by Controller " + gameObject);
         else bar = chargeBar.GetComponentInChildren<Image>();
+
+        chargeBar.SetActive(false);
     }
 
 
@@ -47,7 +49,7 @@ public class ButtonPress : MonoBehaviour
                 // Haptics
                 if (consecutiveActivations >= 1) haptics.SendHapticImpulse(1f, 0.1f); // Keep max haptics
                 else haptics.SendHapticImpulse(progress, 0.1f); // Progressive strength
-                if (pressFrames == button.pressFramesToActivate)
+                if (progress >= 1)
                 {
                     // Button activates (pressed long enough)
                     //button.OnActivate(); TODO put Damien's method

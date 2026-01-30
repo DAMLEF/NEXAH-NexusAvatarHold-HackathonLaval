@@ -67,8 +67,12 @@ public class ToolManager : MonoBehaviour
                     break;
 
                 case Tool.GRENADE:
-                    // Switch back to controller
+                    // Destroy current grenade, Switch back to controller
+                    Destroy(grenadeManager.currentGrenade);
+                    grenadeManager.currentGrenade = null;
+
                     grenadeManager.gameObject.SetActive(false);
+
                     controller.SetActive(true);
                     currentTool = Tool.CONTROLLER;
                     break;

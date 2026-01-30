@@ -6,7 +6,7 @@ using Unity.XR.CoreUtils;
 public class GameManager : MonoBehaviour
 {
 
-    private int money = 0;
+    public int money = 0;
 
     public List<GameObject> lanes;
     private int avatarsCount = 0;
@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
+    }
+
+    private void OnValidate()
+    {
+        makeShopAction(0);
     }
 
     // Update is called once per frame

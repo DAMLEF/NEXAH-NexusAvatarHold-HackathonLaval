@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Avatar : MonoBehaviour
 {
-    public bool axis;
-    public bool direction;
+    private bool axis;
+    private bool direction;
 
     public int damage;
     public float attackSpeed;
@@ -65,5 +65,9 @@ public class Avatar : MonoBehaviour
     public void setupAvatar(GameObject lane)
     {
         defendedLane = lane;
+
+        axis = defendedLane.GetComponent<Lane>().getAxis();
+        direction = defendedLane.GetComponent<Lane>().getDirection();
+
     }
 }

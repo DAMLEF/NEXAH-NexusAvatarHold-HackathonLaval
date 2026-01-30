@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     public int money = 0;
+    private int grenades = 0;
 
     public List<GameObject> lanes;
     private int avatarsCount = 0;
@@ -82,9 +83,15 @@ public class GameManager : MonoBehaviour
         {
             return spawnAvatarFigurine(avatarLSFigurine);
         }
-        else if(action == 2)
+        else if (action == 2)
         {
-            return spawnAvatarFigurine(avatarGrenadeFigurine);
+            grenades++;
+            return true;
+        }
+        else if (action == 3)
+        {
+            //GameObject.Find("Gun").GetComponent<Gun>().upgrade();
+            return true;
         }
         else
         {

@@ -86,6 +86,11 @@ public class Enemy : MonoBehaviour
             removeHealth(collision.gameObject.GetComponent<LaserBounce>().hitDamage);
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Grenade"))
+        {
+            removeHealth(collision.gameObject.GetComponent<Grenade>().hitDamage);
+        }
     }
 
     int getDirection()

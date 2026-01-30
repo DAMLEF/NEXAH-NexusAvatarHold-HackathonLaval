@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 77218392}
+  - component: {fileID: 77218393}
   m_Layer: 0
   m_Name: AvatarGrabSpawn
   m_TagString: Untagged
@@ -144,12 +145,26 @@ Transform:
   m_GameObject: {fileID: 77218391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.91457, y: -0, z: 0.45477}
+  m_LocalPosition: {x: 0, y: 0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77218393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77218391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7874367a62b153e4d8d1944158077466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AvatarGrabSpawn
+  radius: 0.3
+  color: {r: 0.07, g: 0.37, b: 1, a: 1}
 --- !u!1 &133149928
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +197,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   lanes:
   - {fileID: 242083455}
+  avatarGrabSpawn: {fileID: 0}
+  avatarGunFigurine: {fileID: 0}
+  avatarLSFigurine: {fileID: 0}
+  avatarGrenadeFigurine: {fileID: 0}
+  avatarPerLane: 3
 --- !u!4 &133149930
 Transform:
   m_ObjectHideFlags: 0

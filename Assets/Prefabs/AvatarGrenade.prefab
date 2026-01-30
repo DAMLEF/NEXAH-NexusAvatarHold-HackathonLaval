@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1998137432754024387}
   - component: {fileID: 6395446590304754387}
   m_Layer: 0
-  m_Name: EfflamGrenade
+  m_Name: AvatarGrenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -43,8 +43,12 @@ public class ShopButton : MonoBehaviour
     {
         if (canBeBuy())
         {
-            gm.GetComponent<GameManager>().addMoney(price);
-            gm.GetComponent<GameManager>().makeShopAction(action);
+            if (gm.GetComponent<GameManager>().makeShopAction(action))
+            {
+                gm.GetComponent<GameManager>().removeMoney(price);
+            }
+
+
         }
 
     }
